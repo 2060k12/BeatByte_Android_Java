@@ -8,6 +8,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.ait12275.beatbyte.albums.Albums;
+import com.ait12275.beatbyte.albums.AlbumsDAO;
 import com.ait12275.beatbyte.artists.Artists;
 import com.ait12275.beatbyte.artists.ArtistsDAO;
 import com.ait12275.beatbyte.users.Users;
@@ -16,12 +18,13 @@ import com.ait12275.beatbyte.users.UsersDAO;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Users.class, Artists.class}, version = 1, exportSchema = false)
+@Database(entities = {Users.class, Artists.class, Albums.class}, version =11, exportSchema = false)
 public abstract class BeatByteRoomDatabase extends RoomDatabase {
 
     // declare all DAO's
     public abstract UsersDAO usersDAO();
     public abstract  ArtistsDAO artistsDAO();
+    public abstract AlbumsDAO albumsDAO();
 
     private static final int NUMBERS_OF_THREADS =4;
 
@@ -64,10 +67,14 @@ public abstract class BeatByteRoomDatabase extends RoomDatabase {
     BeatByteRoomDatabase.databaseWriteExecutor.execute(
         () -> {
           UsersDAO usersDAO = INSTANCE.usersDAO();
-          usersDAO.insert(new Users("admin", "admin", "admin@admin.com"));
+          usersDAO.insert(new Users("admin", "admin", "admin"));
 
           ArtistsDAO artistsDAO = INSTANCE.artistsDAO();
-          artistsDAO.insert(new Artists("a","a", "a","a","a","a","a","a","a"));
+          artistsDAO.insert(new Artists("Queen", "This is queen", "London, England", "Rock", "...", "Freedy Mercury", "www.queen.com", "a", ""));
+
+          AlbumsDAO albumsDAO = INSTANCE.albumsDAO();
+            albumsDAO.insert(new Albums(1,"News of the world","","","","","","","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/The_Beatles_members_at_New_York_City_in_1964.jpg/220px-The_Beatles_members_at_New_York_City_in_1964.jpg"));
+
         });
     }
 

@@ -3,11 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/usersFragment">
-
+    app:startDestination="@id/homepageFragment2">
     <fragment
-        android:id="@+id/usersFragment"
-        android:name="com.ait12275.beatbyte.users.UsersFragment"
-        android:label="users_fragment"
-        tools:layout="@layout/users_fragment" />
+        android:id="@+id/homepageFragment2"
+        android:name="com.ait12275.beatbyte.homepage.HomepageFragment"
+        android:label="homepage_fragment"
+        tools:layout="@layout/homepage_fragment" >
+        <action
+            android:id="@+id/action_homepageFragment2_to_albumProfileFragment"
+            app:destination="@id/albumProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.ait12275.beatbyte.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" />
+    <fragment
+        android:id="@+id/albumProfileFragment"
+        android:name="com.ait12275.beatbyte.albums.AlbumProfileFragment"
+        android:label="album_profilefragment"
+        tools:layout="@layout/album_profilefragment" />
 </navigation>

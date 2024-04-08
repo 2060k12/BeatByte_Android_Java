@@ -25,7 +25,7 @@ public interface UsersDAO {
     @Query("SELECT * FROM USERS")
     LiveData<List<Users>> findAllUsers();
 
-    @Query("SELECT * FROM USERS WHERE USERID=:id")
+    @Query("SELECT * FROM USERS WHERE USER_ID=:id")
     Users findById(Integer id);
 
 

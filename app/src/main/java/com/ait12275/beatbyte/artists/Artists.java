@@ -1,15 +1,20 @@
 package com.ait12275.beatbyte.artists;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+
+import java.io.Serializable;
 
 @Entity(tableName = "ARTISTS")
 public class Artists {
 
     @PrimaryKey(autoGenerate = true)
+    @NonNull
     @ColumnInfo(name = "ARTIST_ID")
-    Integer id;
+    int id;
 
     @ColumnInfo(name = "NAME")
     String name;
@@ -31,14 +36,17 @@ public class Artists {
 
     String website;
     @ColumnInfo(name = "ALBUMS")
-
-    String albums;
-    @ColumnInfo(name = "UPCOMING_EVENTS")
+//
+//    String albums;
+//    @ColumnInfo(name = "UPCOMING_EVENTS")
 
     String upComingEvents;
 
+    @ColumnInfo(name = "ARTIST_IMG")
+    String artistImg;
 
-    public Artists(String name, String about, String origin, String genres, String labels, String members, String website, String albums, String upComingEvents) {
+
+    public Artists(String name, String about, String origin, String genres, String labels, String members, String website, String upComingEvents, String artistImg) {
         this.name = name;
         this.about = about;
         this.origin = origin;
@@ -46,19 +54,22 @@ public class Artists {
         this.labels = labels;
         this.members = members;
         this.website = website;
-        this.albums = albums;
+//        this.albums = albums;
         this.upComingEvents = upComingEvents;
+        this.artistImg = artistImg;
     }
 
-
+    @Ignore
     public Artists() {
     }
 
-    public Integer getId() {
+
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -118,13 +129,13 @@ public class Artists {
         this.website = website;
     }
 
-    public String getAlbums() {
-        return albums;
-    }
-
-    public void setAlbums(String albums) {
-        this.albums = albums;
-    }
+//    public String getAlbums() {
+//        return albums;
+//    }
+//
+//    public void setAlbums(String albums) {
+//        this.albums = albums;
+//    }
 
     public String getUpComingEvents() {
         return upComingEvents;
@@ -134,6 +145,13 @@ public class Artists {
         this.upComingEvents = upComingEvents;
     }
 
+    public String getArtistImg() {
+        return artistImg;
+    }
+
+    public void setArtistImg(String artistImg) {
+        this.artistImg = artistImg;
+    }
 
     @Override
     public String toString() {
@@ -146,8 +164,8 @@ public class Artists {
                 ", labels='" + labels + '\'' +
                 ", members='" + members + '\'' +
                 ", website='" + website + '\'' +
-                ", albums='" + albums + '\'' +
                 ", upComingEvents='" + upComingEvents + '\'' +
+                ", artistImg='" + artistImg + '\'' +
                 '}';
     }
 }

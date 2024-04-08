@@ -1,9 +1,10 @@
-package com.ait12275.beatbyte;
+package com.ait12275.beatbyte.users;
 
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import com.ait12275.beatbyte.BeatByteRoomDatabase;
 import com.ait12275.beatbyte.users.Users;
 import com.ait12275.beatbyte.users.UsersDAO;
 
@@ -67,9 +68,9 @@ public class UsersRepository {
        try{
            users =future.get();
        } catch (ExecutionException e) {
-           throw new RuntimeException(e);
+           e.printStackTrace();
        } catch (InterruptedException e) {
-           throw new RuntimeException(e);
+           e.printStackTrace();
        }
 
        return  users;

@@ -3,13 +3,14 @@ package com.ait12275.beatbyte.users;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "USERS")
 public class Users {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "USERID")
-    Integer userId;
+    @ColumnInfo(name = "USER_ID")
+    int userId;
     @ColumnInfo(name = "USERNAME")
     String userName;
 
@@ -25,12 +26,15 @@ public class Users {
         this.email = email;
 
     }
+    @Ignore
+    public Users() {
+    }
 
     public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -57,8 +61,7 @@ public class Users {
     }
 
 
-    public Users() {
-    }
+
 
     @Override
     public String toString() {

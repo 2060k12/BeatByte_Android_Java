@@ -1,4 +1,4 @@
-package com.ait12275.beatbyte.users;
+package com.ait12275.beatbyte.login;
 
 import android.app.Application;
 
@@ -7,24 +7,22 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.ait12275.beatbyte.UsersRepository;
+import com.ait12275.beatbyte.users.Users;
+import com.ait12275.beatbyte.users.UsersRepository;
 
 import java.util.List;
 
-public class UsersViewModel extends AndroidViewModel {
+public class LoginViewModel extends AndroidViewModel{
 
 
-    private UsersRepository usersRepository;
-    private LiveData<List<Users>> allusers;
-    public UsersViewModel(@NonNull Application application) {
+    private final UsersRepository usersRepository;
+    private final LiveData<List<Users>> allUsers;
+    public LoginViewModel(@NonNull Application application) {
         super(application);
         usersRepository = new UsersRepository(application);
-        allusers = usersRepository.getAllUsers();
+        allUsers = usersRepository.getAllUsers();
+
     }
-    // TODO: Implement the ViewModel
-
-
-    // to insert a user
     public void insert(Users users){
         usersRepository.insert(users);
     }
@@ -45,12 +43,14 @@ public class UsersViewModel extends AndroidViewModel {
 
     //to find a user by their Id
     public Users findById(Integer id){
-        Users users = usersRepository.findById(id);
-        return users;
+        return usersRepository.findById(id);
     }
 
     // to get all the users
-    public  LiveData<List<Users>> getAllusers() {
-        return allusers;
+    public  LiveData<List<Users>> getAllUsers() {
+        return allUsers;
     }
+
+
+
 }
