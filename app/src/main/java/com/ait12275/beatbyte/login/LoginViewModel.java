@@ -51,6 +51,11 @@ public class LoginViewModel extends AndroidViewModel{
         return allUsers;
     }
 
+    // to check the login
+    public Users checkLogin(String email, String password){
+        return usersRepository.checkLogin(email, password);
+    }
+
 
 
 }

@@ -6,6 +6,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +60,20 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                    mViewModel.insert(new Users("pranish", "12345", "iampranish@outlook.com"));
+//                    mViewModel.insert(new Users("pranish", "12345", "iampranish@outlook.com"));
+                String email = binding.editTextTextEmailAddress.getText().toString();
+                String password =binding.editTextTextPassword.getText().toString();
+
+                if(mViewModel.checkLogin(email, password) != null){
+                    NavController navController = Navigation.findNavController(v);
+                    navController.navigate(R.id.action_loginFragment_to_homepageFragment2);
+
+                }
+
+                else {
+                    Toast.makeText(getContext(), "Wrong Email Or Password", Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });

@@ -78,6 +78,24 @@ public class UsersRepository {
     }
 
 
+    public Users checkLogin(String email, String Password){
+        Callable c =()->{
+            Users users = usersDAO.checkLogIn(email, Password);
+            return users;
+        };
+
+        Future<Users> future = BeatByteRoomDatabase.databaseWriteExecutor.submit(c);
+        try {
+            users = future.get();
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return users;
+    }
+
+
 
 
 }
