@@ -39,16 +39,17 @@ public class AlbumProfileFragment extends Fragment {
 
 
         Bundle bundle = getArguments();
-        if(bundle != null && bundle.containsKey("ALBUMS_PROFILE")){
+        if(bundle != null && bundle.containsKey("ALBUMS_PROFILES")){
             img = binding.albumArtImage;
-            albums = (Albums) bundle.getSerializable("ALBUMS_PROFILE");
+            albums = (Albums) bundle.getSerializable("ALBUMS_PROFILES");
             String url = albums.albumArt;
 
             binding.albumNameText.setText(albums.getName());
+            binding.aboutBodyText.setText(albums.getAbout());
             Toast.makeText(getContext(), albums.getName(), Toast.LENGTH_SHORT).show();
 
             Toast.makeText(getContext(), url, Toast.LENGTH_SHORT).show();
-            Picasso.get().load(url).into(img);
+            Picasso.get().load(url).resize(360,230).into(img);
         }
     }
 }

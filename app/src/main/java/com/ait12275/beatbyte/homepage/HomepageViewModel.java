@@ -9,19 +9,35 @@ import androidx.lifecycle.ViewModel;
 
 import com.ait12275.beatbyte.albums.AlbumRepository;
 import com.ait12275.beatbyte.albums.Albums;
+import com.ait12275.beatbyte.artists.ArtistRepository;
+import com.ait12275.beatbyte.artists.Artists;
 
 import java.util.List;
 
 
 public class HomepageViewModel extends AndroidViewModel {
 private AlbumRepository albumRepository;
+private ArtistRepository artistRepository;
 private LiveData<List<Albums>> allAlbums;
+private LiveData<List<Artists>> allArtists;
+
 
     public HomepageViewModel(@NonNull Application application) {
         super(application);
+
+        // for Albums
         albumRepository = new AlbumRepository(application);
         allAlbums = albumRepository.getAllAlbums();
+
+        // for Artists
+        artistRepository = new ArtistRepository(application);
+        allArtists = artistRepository.getAllArtists();
+
+
     }
+
+
+    // For Albums
 
     public void insert(Albums albums){
         albumRepository.insert(albums);
@@ -34,12 +50,21 @@ private LiveData<List<Albums>> allAlbums;
     }
 
     public LiveData<List<Albums>> getAllAlbums (){
-        return  albumRepository.getAllAlbums();
+        return  allAlbums;
     }
 
     public Albums findById(int id){
         return albumRepository.findByID(id);
     }
 
+
+    // For artists
+
+    public void insertArtist (Artists artists){artistRepository.insert(artists);}
+
+
+    public LiveData<List<Artists>> getAllArtists() {
+        return  artistRepository.getAllArtists();
+    }
 
 }

@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.ait12275.beatbyte.R;
 import com.ait12275.beatbyte.albums.Albums;
+import com.ait12275.beatbyte.artists.Artists;
 import com.ait12275.beatbyte.databinding.HomepageFragmentBinding;
 
 import java.io.Serializable;
@@ -45,26 +46,47 @@ public class HomepageFragment extends Fragment implements OnItemClickListener{
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(HomepageViewModel.class);
 
+
+    //Layout manager for Albums
     binding.albumsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
     binding.albumsRecyclerView.setHasFixedSize(true);
 
-    AlbumsRecyclerViewAdapter adapter = new AlbumsRecyclerViewAdapter(this);
-    binding.albumsRecyclerView.setAdapter(adapter);
+    AlbumsRecyclerViewAdapter albumsAdapter = new AlbumsRecyclerViewAdapter(this);
+    binding.albumsRecyclerView.setAdapter(albumsAdapter);
 
+
+    // Layout manager for Artists
+    binding.artistsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+    binding.artistsRecyclerView.setHasFixedSize(true);
+
+    ArtistRecyclerViewAdapter artistAdapter = new ArtistRecyclerViewAdapter();
+    binding.artistsRecyclerView.setAdapter(artistAdapter);
+
+    // observer for Albums
     final Observer<List<Albums>> albumsObserver  = new Observer<List<Albums>>() {
         @Override
         public void onChanged(List<Albums> albums) {
-            adapter.submitList(albums);
+            albumsAdapter.submitList(albums);
         }
     };
 
     mViewModel.getAllAlbums().observe(getViewLifecycleOwner(),albumsObserver);
 
+    // observer for Artists
+    final Observer<List<Artists>> artistsObserver = new Observer<List<Artists>>() {
+        @Override
+        public void onChanged(List<Artists> artists) {
+        artistAdapter.submitList(artists);
+        }
+    };
+    mViewModel.getAllArtists().observe(getViewLifecycleOwner(), artistsObserver);
+
 
     binding.addDataButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            mViewModel.insert(new Albums(1,"Beatles","","","","","","","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJv6GuGnysJIrgtmGZsD_SN-Ns7e7PBoEqjdwEgtt46w&s"));
+//            mViewModel.insert(new Albums(1,"Beatles","","","","","","","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJv6GuGnysJIrgtmGZsD_SN-Ns7e7PBoEqjdwEgtt46w&s"));
+            mViewModel.insertArtist(new Artists("The Beatles","Beatles","","","","","","","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJv6GuGnysJIrgtmGZsD_SN-Ns7e7PBoEqjdwEgtt46w&s"));
         }
     });
     }

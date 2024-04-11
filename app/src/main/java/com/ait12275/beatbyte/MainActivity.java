@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.ait12275.beatbyte.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -14,6 +16,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 //
+//        ActivityMainBinding binding;
+//        binding = ActivityMainBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
+
+
+
+
+
 //        if(savedInstanceState == null){
 //            getSupportFragmentManager().beginTransaction().replace(R.id.container, UsersFragment.newInstance()).commitNow();
 //        }

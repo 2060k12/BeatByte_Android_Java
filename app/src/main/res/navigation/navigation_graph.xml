@@ -11,7 +11,9 @@
         tools:layout="@layout/homepage_fragment" >
         <action
             android:id="@+id/action_homepageFragment2_to_albumProfileFragment"
-            app:destination="@id/albumProfileFragment" />
+            app:destination="@id/albumProfileFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
