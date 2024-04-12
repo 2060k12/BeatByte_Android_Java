@@ -18,7 +18,7 @@ import com.ait12275.beatbyte.users.UsersDAO;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Users.class, Artists.class, Albums.class}, version =11, exportSchema = false)
+@Database(entities = {Users.class, Artists.class, Albums.class}, version =13, exportSchema = false)
 public abstract class BeatByteRoomDatabase extends RoomDatabase {
 
     // declare all DAO's
@@ -67,7 +67,7 @@ public abstract class BeatByteRoomDatabase extends RoomDatabase {
     BeatByteRoomDatabase.databaseWriteExecutor.execute(
         () -> {
           UsersDAO usersDAO = INSTANCE.usersDAO();
-          usersDAO.insert(new Users("admin", "admin", "admin"));
+          usersDAO.insert(new Users("admin", "admin", "admin", "https://i.ebayimg.com/images/g/ACIAAOSwdnphKthz/s-l1600.png"));
 
           ArtistsDAO artistsDAO = INSTANCE.artistsDAO();
           artistsDAO.insert(new Artists("Queen", "This is queen", "London, England", "Rock", "...", "Freedy Mercury", "www.queen.com", "a", ""));

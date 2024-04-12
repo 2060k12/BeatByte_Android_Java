@@ -5,12 +5,12 @@
     android:id="@+id/navigation_graph"
     app:startDestination="@id/loginFragment">
     <fragment
-        android:id="@+id/homepageFragment2"
+        android:id="@+id/homepageFragment"
         android:name="com.ait12275.beatbyte.homepage.HomepageFragment"
         android:label="homepage_fragment"
         tools:layout="@layout/homepage_fragment" >
         <action
-            android:id="@+id/action_homepageFragment2_to_albumProfileFragment"
+            android:id="@+id/action_homepageFragment_to_albumProfileFragment"
             app:destination="@id/albumProfileFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
@@ -22,14 +22,19 @@
         tools:layout="@layout/login_fragment" >
         <action
             android:id="@+id/action_loginFragment_to_homepageFragment2"
-            app:destination="@id/homepageFragment2" />
+            app:destination="@id/homepageFragment" />
         <action
             android:id="@+id/action_loginFragment_to_homepageFragment22"
-            app:destination="@id/homepageFragment2" />
+            app:destination="@id/homepageFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumProfileFragment"
         android:name="com.ait12275.beatbyte.albums.AlbumProfileFragment"
         android:label="album_profilefragment"
         tools:layout="@layout/album_profilefragment" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.ait12275.beatbyte.users.UserProfileFragment"
+        android:label="userprofile_fragment"
+        tools:layout="@layout/userprofile_fragment" />
 </navigation>

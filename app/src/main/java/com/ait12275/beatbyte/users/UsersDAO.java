@@ -25,8 +25,8 @@ public interface UsersDAO {
     @Query("SELECT * FROM USERS")
     LiveData<List<Users>> findAllUsers();
 
-    @Query("SELECT * FROM USERS WHERE USER_ID=:id")
-    Users findById(Integer id);
+    @Query("SELECT * FROM USERS WHERE EMAIL=:email")
+    Users findById(String email);
 
     @Query("SELECT * FROM USERS WHERE EMAIL=:email AND PASSWORD =:password ")
     Users checkLogIn(String email, String password);

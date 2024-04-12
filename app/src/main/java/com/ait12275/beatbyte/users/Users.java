@@ -1,41 +1,51 @@
 package com.ait12275.beatbyte.users;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "USERS")
-public class Users {
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "USER_ID")
-    int userId;
+public class Users implements Serializable {
+
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "EMAIL")
+    String email;
+
     @ColumnInfo(name = "USERNAME")
     String userName;
 
     @ColumnInfo(name = "PASSWORD")
     String password;
 
-    @ColumnInfo(name = "EMAIL")
-    String email;
 
-    public Users(String userName, String password, String email) {
+    @ColumnInfo(name = "USER_IMAGE")
+    String userImage;
+
+
+    public Users(@NonNull String email, String userName, String password, String userImage) {
+        this.email = email;
         this.userName = userName;
         this.password = password;
-        this.email = email;
-
+        this.userImage = userImage;
     }
+
     @Ignore
     public Users() {
     }
 
-    public int getUserId() {
-        return userId;
+    @NonNull
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setEmail(@NonNull String email) {
+        this.email = email;
     }
 
     public String getUserName() {
@@ -43,7 +53,9 @@ public class Users {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;}
+        this.userName = userName;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -52,24 +64,21 @@ public class Users {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUserImage() {
+        return userImage;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
     }
-
-
-
 
     @Override
     public String toString() {
         return "Users{" +
-                "userId=" + userId +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
+                "email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", UserImage='" + userImage + '\'' +
                 '}';
     }
 }

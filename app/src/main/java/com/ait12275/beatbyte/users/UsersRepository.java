@@ -58,9 +58,9 @@ public class UsersRepository {
     }
 
     // to get a user by their id in the table
-    public Users findById(Integer id){
+    public Users findById(String email){
        Callable c = ()-> {
-           Users users = usersDAO.findById(id);
+           Users users = usersDAO.findById(email);
            return users;
        };
 

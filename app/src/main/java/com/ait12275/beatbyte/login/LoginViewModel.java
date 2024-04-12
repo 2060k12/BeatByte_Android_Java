@@ -42,8 +42,8 @@ public class LoginViewModel extends AndroidViewModel{
 
 
     //to find a user by their Id
-    public Users findById(Integer id){
-        return usersRepository.findById(id);
+    public Users findById(String email){
+        return usersRepository.findById(email);
     }
 
     // to get all the users

@@ -10,14 +10,17 @@ import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.ait12275.beatbyte.R;
+import com.ait12275.beatbyte.albums.Albums;
 import com.ait12275.beatbyte.databinding.LoginFragmentBinding;
 import com.ait12275.beatbyte.users.Users;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -25,6 +28,10 @@ public class LoginFragment extends Fragment {
 
     private LoginFragmentBinding binding;
     private LoginViewModel mViewModel;
+    private Users users;
+    public static String loggedInUserEmail;
+
+
 
     public static LoginFragment newInstance() {
         return new LoginFragment();
@@ -34,14 +41,23 @@ public class LoginFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
+
         binding = LoginFragmentBinding.inflate(inflater, container, false);
+
         return binding.getRoot();
+
+
 
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        // Access the bottom navigation view from the activity
+
+
+
+
 
 
         final Observer<List<Users>> allUsersObserver = new Observer<List<Users>>() {
@@ -56,6 +72,7 @@ public class LoginFragment extends Fragment {
         mViewModel.getAllUsers().observe(getViewLifecycleOwner(), allUsersObserver);
 
 
+
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,8 +82,11 @@ public class LoginFragment extends Fragment {
                 String password =binding.editTextTextPassword.getText().toString();
 
                 if(mViewModel.checkLogin(email, password) != null){
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("USER_DETAILS", users);
                     NavController navController = Navigation.findNavController(v);
                     navController.navigate(R.id.action_loginFragment_to_homepageFragment2);
+                    loggedInUserEmail = email;
 
                 }
 
@@ -77,6 +97,8 @@ public class LoginFragment extends Fragment {
 
             }
         });
+
     }
+
 
 }
