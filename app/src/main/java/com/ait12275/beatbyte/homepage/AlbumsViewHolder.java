@@ -24,7 +24,7 @@ public class AlbumsViewHolder extends RecyclerView.ViewHolder {
         imageView = binding.albumArt;
         String url = albums.getAlbumArt();
         binding.albumName.setText(albums.getName());
-        Picasso.get().load(url).into(imageView);
+        Picasso.get().load(url).resize(200,200).centerCrop().into(imageView);
     }
 
     public void bind(Albums albums, OnItemClickListener onItemClickListener){

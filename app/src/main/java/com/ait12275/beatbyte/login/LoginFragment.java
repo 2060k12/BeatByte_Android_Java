@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ait12275.beatbyte.MainActivity;
 import com.ait12275.beatbyte.R;
 import com.ait12275.beatbyte.albums.Albums;
 import com.ait12275.beatbyte.databinding.LoginFragmentBinding;
@@ -30,6 +31,8 @@ public class LoginFragment extends Fragment {
     private LoginViewModel mViewModel;
     private Users users;
     public static String loggedInUserEmail;
+    public static String loggedInUserName;
+
 
 
 
@@ -87,6 +90,9 @@ public class LoginFragment extends Fragment {
                     NavController navController = Navigation.findNavController(v);
                     navController.navigate(R.id.action_loginFragment_to_homepageFragment2);
                     loggedInUserEmail = email;
+                    loggedInUserName = mViewModel.findById(email).getUserName().toString();
+                    MainActivity.binding.navView.setVisibility(View.VISIBLE);
+
 
                 }
 

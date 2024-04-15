@@ -22,6 +22,11 @@ public class AlbumsRecyclerViewAdapter extends ListAdapter<Albums, AlbumsViewHol
         this.onItemClickListener = onItemClickListener;
 
     }
+
+    public AlbumsRecyclerViewAdapter() {
+        super(DIFF_CALLBACK);
+
+    }
     private static final DiffUtil.ItemCallback<Albums> DIFF_CALLBACK = new DiffUtil.ItemCallback<Albums>() {
         @Override
         public boolean areItemsTheSame(@NonNull Albums oldItem, @NonNull Albums newItem) {

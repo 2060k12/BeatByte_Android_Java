@@ -14,6 +14,9 @@
             app:destination="@id/albumProfileFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homepageFragment_to_addAlbumsScrollingFragment"
+            app:destination="@id/addAlbumsScrollingFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -31,10 +34,43 @@
         android:id="@+id/albumProfileFragment"
         android:name="com.ait12275.beatbyte.albums.AlbumProfileFragment"
         android:label="album_profilefragment"
-        tools:layout="@layout/album_profilefragment" />
+        tools:layout="@layout/album_profilefragment" >
+        <action
+            android:id="@+id/action_albumProfileFragment_to_ratingsAlbumsFragment2"
+            app:destination="@id/ratingsAlbumsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userProfileFragment"
         android:name="com.ait12275.beatbyte.users.UserProfileFragment"
         android:label="userprofile_fragment"
         tools:layout="@layout/userprofile_fragment" />
+    <fragment
+        android:id="@+id/addAlbumsScrollingFragment"
+        android:name="com.ait12275.beatbyte.artists.AddArtistScrollingFragment"
+        android:label="add_albums_scrolling_fragment"
+        tools:layout="@layout/add_artist_scrolling_fragment" >
+        <action
+            android:id="@+id/action_addAlbumsScrollingFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment"
+            app:popUpTo="@id/homepageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ratingsAlbumsFragment"
+        android:name="com.ait12275.beatbyte.albums.RatingsAlbumsFragment"
+        android:label="ratings_albums_fragment"
+        tools:layout="@layout/ratings_albums_fragment" >
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/browseFragment"
+        android:name="com.ait12275.beatbyte.browse.BrowseFragment"
+        android:label="browse_fragment"
+        tools:layout="@layout/browse_fragment" />
+    <fragment
+        android:id="@+id/artistProfileFragment"
+        android:name="com.ait12275.beatbyte.artists.ArtistProfileFragment"
+        android:label="artist_profile_fragment"
+        tools:layout="@layout/artist_profile_fragment" />
 </navigation>

@@ -27,7 +27,7 @@ public class ArtistViewHolder extends RecyclerView.ViewHolder {
         String url = artists.getArtistImg();
         binding.artistName.setText(artists.getName());
         if( url != null && !url.isEmpty() ) {
-            Picasso.get().load(url).resize(200, 200).into(binding.artistImage);
+            Picasso.get().load(url).resize(200, 200).centerCrop().into(binding.artistImage);
         }
     }
 }

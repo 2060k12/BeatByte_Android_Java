@@ -35,7 +35,7 @@ public class Artists {
     @ColumnInfo(name = "WEBSITE")
 
     String website;
-    @ColumnInfo(name = "ALBUMS")
+    @ColumnInfo(name = "UPCOMING_EVENTS")
 //
 //    String albums;
 //    @ColumnInfo(name = "UPCOMING_EVENTS")

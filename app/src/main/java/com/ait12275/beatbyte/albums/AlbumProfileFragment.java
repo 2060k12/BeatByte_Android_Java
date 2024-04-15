@@ -10,7 +10,11 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
+import com.ait12275.beatbyte.MainActivity;
 import com.ait12275.beatbyte.R;
 import com.ait12275.beatbyte.databinding.AlbumProfilefragmentBinding;
 import com.squareup.picasso.Picasso;
@@ -19,8 +23,11 @@ public class AlbumProfileFragment extends Fragment {
 
 
     private AlbumProfilefragmentBinding binding;
+
     private Albums albums;
     ImageView img ;
+
+
 
     @Nullable
     @Override
@@ -46,10 +53,20 @@ public class AlbumProfileFragment extends Fragment {
 
             binding.albumNameText.setText(albums.getName());
             binding.aboutBodyText.setText(albums.getAbout());
-            Toast.makeText(getContext(), albums.getName(), Toast.LENGTH_SHORT).show();
-
-            Toast.makeText(getContext(), url, Toast.LENGTH_SHORT).show();
+            binding.studioNameTextBox.setText(albums.getRecordedStudio());
+            binding.lengthTextBox.setText(albums.getLength());
+            binding.labelTextBox.setText(albums.labels);
+            binding.producerNameTextBox.setText(albums.getProducers());
             Picasso.get().load(url).resize(360,230).into(img);
+            binding.albumArtImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NavController navController = Navigation.findNavController(v);
+                    navController.navigate(AlbumProfileFragmentDirections.actionAlbumProfileFragmentToRatingsAlbumsFragment2(albums.getId()));
+                }
+            });
         }
+
+
     }
 }

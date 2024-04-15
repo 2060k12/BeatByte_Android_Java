@@ -21,9 +21,14 @@ import com.ait12275.beatbyte.R;
 import com.ait12275.beatbyte.albums.Albums;
 import com.ait12275.beatbyte.artists.Artists;
 import com.ait12275.beatbyte.databinding.HomepageFragmentBinding;
+import com.ait12275.beatbyte.login.LoginFragment;
 import com.squareup.picasso.Picasso;
 
+import java.sql.Time;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 public class HomepageFragment extends Fragment implements OnItemClickListener{
 
@@ -50,6 +55,8 @@ public class HomepageFragment extends Fragment implements OnItemClickListener{
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(HomepageViewModel.class);
 
+//        Date currentTime = Calendar.getInstance().getTime();
+    binding.greetingUserNameTextView.setText(LoginFragment.loggedInUserName);
 
 
 
@@ -68,7 +75,25 @@ public class HomepageFragment extends Fragment implements OnItemClickListener{
     ArtistRecyclerViewAdapter artistAdapter = new ArtistRecyclerViewAdapter();
     binding.artistsRecyclerView.setAdapter(artistAdapter);
 
-    // observer for Albums
+
+
+
+
+    // for hero layout (albums)
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        binding.recyclerView.setHasFixedSize(true);
+        binding.recyclerView.setAdapter(albumsAdapter);
+
+
+
+
+
+
+
+
+
+
+        // observer for Albums
     final Observer<List<Albums>> albumsObserver  = new Observer<List<Albums>>() {
         @Override
         public void onChanged(List<Albums> albums) {
@@ -88,14 +113,26 @@ public class HomepageFragment extends Fragment implements OnItemClickListener{
     mViewModel.getAllArtists().observe(getViewLifecycleOwner(), artistsObserver);
 
 
-    binding.addDataButton.setOnClickListener(new View.OnClickListener() {
+//    binding.addDataButton.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+////            mViewModel.insert(new Albums(1,"Beatles","","","","","","","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJv6GuGnysJIrgtmGZsD_SN-Ns7e7PBoEqjdwEgtt46w&s"));
+//            mViewModel.insertArtist(new Artists("The Beatles","Beatles","","","","","","","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJv6GuGnysJIrgtmGZsD_SN-Ns7e7PBoEqjdwEgtt46w&s"));
+//        }
+//    });
+
+
+    // Floating button
+    binding.addFloatingButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            mViewModel.insert(new Albums(1,"Beatles","","","","","","","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJv6GuGnysJIrgtmGZsD_SN-Ns7e7PBoEqjdwEgtt46w&s"));
-            mViewModel.insertArtist(new Artists("The Beatles","Beatles","","","","","","","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJv6GuGnysJIrgtmGZsD_SN-Ns7e7PBoEqjdwEgtt46w&s"));
+            NavController navController = Navigation.findNavController(v);
+            navController.navigate(R.id.action_homepageFragment_to_addAlbumsScrollingFragment);
         }
     });
+
     }
+
 
     @Override
     public void onClick(Albums albums, View view) {
@@ -107,4 +144,7 @@ public class HomepageFragment extends Fragment implements OnItemClickListener{
         navController.navigate(R.id.action_homepageFragment_to_albumProfileFragment, bundle);
 
     }
+
+
+
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="2000dp"
-    tools:context=".albums.AlbumProfileFragment">
+    tools:context=".artists.ArtistProfileFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="More albums"
+            android:text="UpcomingEvents"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/trackLinerarLayout" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/albumArtImage"
             android:layout_width="match_parent"
             android:layout_height="241dp"
@@ -47,7 +47,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:text="News of the World"
+            android:gravity="center"
+            android:text="Artist Name"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="#09E85E"
             android:textStyle="bold"
@@ -61,7 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Queen"
+            android:gravity="center"
+            android:text="Active Years"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -143,7 +145,7 @@
                     android:id="@+id/studioText"
                     android:layout_width="129dp"
                     android:layout_height="wrap_content"
-                    android:text="Studio"
+                    android:text="Origin"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold" />
 
@@ -163,7 +165,7 @@
                     android:id="@+id/lengthText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Length"
+                    android:text="Genres"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold" />
 
@@ -201,7 +203,7 @@
                     android:id="@+id/producerText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Producer"
+                    android:text="Members"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold" />
 
@@ -246,7 +248,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Track"
+            android:text="Albums"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,6 +1,7 @@
 package com.ait12275.beatbyte;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private ActivityMainBinding binding;
+    public static ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.homepageFragment, R.id.userProfileFragment)
+                R.id.homepageFragment, R.id.userProfileFragment, R.id.browseFragment)
                 .build();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-
-
+        binding.navView.setVisibility(View.GONE);
 
 
     }

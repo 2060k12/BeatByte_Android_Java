@@ -6,6 +6,10 @@
         android:icon="@drawable/baseline_add_24"
         android:title="Home" />
     <item
+        android:id="@+id/browseFragment"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Browse" />
+    <item
         android:id="@+id/userProfileFragment"
         android:icon="@drawable/outline_account_circle_24"
         android:title="Profile" />

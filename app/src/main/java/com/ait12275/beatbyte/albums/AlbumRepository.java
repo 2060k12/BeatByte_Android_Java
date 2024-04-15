@@ -67,4 +67,21 @@ public class AlbumRepository {
         return  albums;
     }
 
+    public Albums searchAlbums (String name){
+        Callable c = ()->{
+            Albums albums = albumsDAO.searchAlbums(name);
+            return  albums;
+        };
+
+        Future<Albums> future = BeatByteRoomDatabase.databaseWriteExecutor.submit(c);
+        try{
+            albums = future.get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return  albums;
+    }
+
 }

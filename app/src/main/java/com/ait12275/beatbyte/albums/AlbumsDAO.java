@@ -30,4 +30,7 @@ public interface AlbumsDAO {
 
     @Query("SELECT * FROM ALBUMS WHERE ALBUM_ID =:id")
     Albums findAlbumsByID (int id);
+
+    @Query("SELECT * FROM albums WHERE name LIKE '%' || :name || '%'")
+    Albums searchAlbums (String name);
 }

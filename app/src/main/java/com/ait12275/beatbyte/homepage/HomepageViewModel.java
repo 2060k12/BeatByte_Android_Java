@@ -56,6 +56,10 @@ private LiveData<List<Artists>> allArtists;
     public Albums findById(int id){
         return albumRepository.findByID(id);
     }
+    public Albums searchAlbums(String name){
+        return albumRepository.searchAlbums(name);
+    }
+
 
 
     // For artists
